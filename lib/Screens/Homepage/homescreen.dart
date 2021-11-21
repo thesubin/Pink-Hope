@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 import 'data.dart';
+import 'package:flutter_auth/Screens/Shop/home/home_screen.dart';
 class Home extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -59,9 +60,8 @@ class _HomeScreenState extends State<Home> {
     });
 
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: SafeArea(
-        child:Container(
+      Widget  HomeTab(){
+      return  Container(
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -163,7 +163,13 @@ class _HomeScreenState extends State<Home> {
             ),
             ],
         ),
-    )),
+    );
+    }
+    final List _children= [HomeTab(),Shop(),Shop()];
+    return Scaffold(
+      body: SafeArea(
+        child:_children[_currentTab]
+       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentTab,
         onTap: (int value) {
