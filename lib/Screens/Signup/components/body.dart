@@ -8,11 +8,16 @@ import 'package:flutter_auth/components/rounded_button.dart';
 import 'package:flutter_auth/components/rounded_input_field.dart';
 import 'package:flutter_auth/components/rounded_password_field.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:flutter_auth/Auth/auth_service.dart';
 
+import 'package:provider/provider.dart';
 class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+     final TextEditingController emailController = TextEditingController();
+    final TextEditingController passwordController = TextEditingController();
+
     return Background(
       child: SingleChildScrollView(
         child: Column(
@@ -30,13 +35,23 @@ class Body extends StatelessWidget {
             RoundedInputField(
               hintText: "Your Email",
               onChanged: (value) {},
+               controller: emailController,
+             
             ),
             RoundedPasswordField(
+            controller: passwordController,
+  
               onChanged: (value) {},
             ),
             RoundedButton(
               text: "SIGNUP",
-              press: () {},
+              press: () {
+                     context.read<AuthenticationService>().signUp(
+                    email: emailController.text.trim(),
+                    password: passwordController.text.trim(),
+                  ).then((value) => print(value));
+            
+              },
             ),
             SizedBox(height: size.height * 0.03),
             AlreadyHaveAnAccountCheck(

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "511086658902",
+    "project_id": "pink-hope",
+    "storage_bucket": "pink-hope.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:511086658902:android:3256080df9ebb38c4582f7",
+        "android_client_info": {
+          "package_name": "com.example.flutter_auth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "511086658902-dnegfkojug0600nnmdc62ktjvdfsv0vm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.flutter_auth",
+            "certificate_hash": "1d3d3785b6a15a1e39cdaed069af006003e3423d"
+          }
+        },
+        {
+          "client_id": "511086658902-d0eqjjeej9c7ms57p7dcv23onevjjro5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_5bIPgy5jFkR832FHBvggJxDz8pKRUKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "511086658902-d0eqjjeej9c7ms57p7dcv23onevjjro5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
