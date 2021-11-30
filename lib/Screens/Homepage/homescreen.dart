@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/About/About.dart';
 import 'package:flutter_auth/Screens/Homepage/CardScroll.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -165,7 +166,8 @@ class _HomeScreenState extends State<Home> {
         ),
     );
     }
-    final List _children= [HomeTab(),Shop(),Shop()];
+    final List _children= [HomeTab(),Shop(),About()]; //We Have defined the bottom Nav Here
+    
     return Scaffold(
       body: SafeArea(
         child:_children[_currentTab]
