@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/About/About.dart';
+import 'package:flutter_auth/Screens/Donate/Donate.dart';
 import 'package:flutter_auth/Screens/Homepage/CardScroll.dart';
+import 'package:flutter_auth/Screens/Notification/notificationList.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
@@ -66,10 +68,11 @@ class _HomeScreenState extends State<Home> {
         width: double.infinity,
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topCenter,
+            begin: Alignment.center,
             colors: [
-              Colors.pink,
-              Colors.white
+                          Color(0xfff1cfd5),
+              Color(0xfff1cfd5),
+                      
             ]
           )
         ),
@@ -87,10 +90,12 @@ class _HomeScreenState extends State<Home> {
                   fontSize: 20.0,
                   
                   fontWeight: FontWeight.bold,
-                  color: Colors.white
+                        color: Colors.white
+            
                 ),
               ),
-              IconButton(onPressed:() {}, icon: Icon(Icons.search_rounded,color: Colors.white,size: 30,))
+              IconButton(onPressed:() {}, icon: Icon(Icons.search_rounded,      color: Colors.white
+            ,size: 30,))
               ],
             )
             ),
@@ -110,14 +115,17 @@ class _HomeScreenState extends State<Home> {
                     child: Text("What is Pink Hope?",
                   
                   style: GoogleFonts.poppins(textStyle:TextStyle(
-                  fontSize: 55.0,
+                  fontSize: 45.0,
                   
-                  fontWeight: FontWeight.bold,
-                  color: Colors.pinkAccent
+                  fontWeight: FontWeight.w100,
+                        color: Color(0xff73313b)
+            
                 )))),
-                  SvgPicture.asset(
-                 "assets/icons/login.svg",
-                 height: size.height * 0.35,
+                  Image.asset(
+                 "assets/images/home.jpg",
+                 height: size.height * 0.30,
+                 
+                 fit: BoxFit.cover,
                  ),
                 Padding(
                     padding: EdgeInsets.only(left: 20, right: 20,top: 40),
@@ -127,7 +135,8 @@ class _HomeScreenState extends State<Home> {
                     fontSize: 22.0,
                     
                     fontWeight: FontWeight.w400,
-                     color: Colors.pinkAccent
+                          color: Color(0xff73313b)
+            
                 ))) ,),
                       Padding(
                       
@@ -166,7 +175,7 @@ class _HomeScreenState extends State<Home> {
         ),
     );
     }
-    final List _children= [HomeTab(),Shop(),About()]; //We Have defined the bottom Nav Here
+    final List _children= [HomeTab(),Shop(),About(),Donate(),NotificationList()]; //We Have defined the bottom Nav Here
     
     return Scaffold(
       body: SafeArea(
@@ -183,6 +192,7 @@ class _HomeScreenState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
+              color: Colors.grey,
               size: 30.0,
             ),
             title: SizedBox.shrink(),
@@ -191,6 +201,8 @@ class _HomeScreenState extends State<Home> {
             icon: Icon(
               Icons.shopping_bag,
               size: 30.0,
+               color: Colors.grey,
+             
             ),
             title: SizedBox.shrink(),
           ),
@@ -198,9 +210,31 @@ class _HomeScreenState extends State<Home> {
             icon: Icon(
               Icons.people,
               size: 30.0,
+             color: Colors.grey,
+             
+            ),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.card_giftcard ,
+              size: 30.0,
+             color: Colors.grey,
+             
+            ),
+            title: SizedBox.shrink(),
+          ),
+ 
+           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.notifications,
+              color: Colors.grey,
+             
+              size: 30.0,
             ),
             title: SizedBox.shrink(),
           )
+        
         ],
       ),
     );
