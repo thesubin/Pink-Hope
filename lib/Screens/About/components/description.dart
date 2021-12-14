@@ -33,9 +33,9 @@ class Description extends StatelessWidget {
         padding:EdgeInsets.symmetric(vertical: size.height * 0.07,horizontal: 25),
         child: Text(
                 'Pink Hope is a preventative health hub that gives our community the tools to assess, manage and reduce their risk of breast and ovarian cancer, while also providing personalised support for at-risk women. We empower people to take charge of their own health by assessing, understanding, and reducing their risk of breast and ovarian cancer. And we offer support every step of the way.',
-                style: GoogleFonts.poppins(textStyle:TextStyle(
+                style: GoogleFonts.mulish(textStyle:TextStyle(
                   fontSize: 14.0,
-                  
+                  fontWeight: FontWeight.w100,
                   color: Color(0xff73313b)
                 )),
               ),

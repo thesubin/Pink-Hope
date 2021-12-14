@@ -23,21 +23,23 @@ class Mission extends StatelessWidget {
           children: [
             Text(
                 'Our Mission',
-                style: TextStyle(
+                style: GoogleFonts.mulish(textStyle:TextStyle(
                   fontSize: 20.0,
+                    fontWeight: FontWeight.w400,
+                
                   
-                  fontWeight: FontWeight.bold,
-                ),
+                )),
               )    
             ,
             Padding(
               padding: EdgeInsets.symmetric(vertical: 20),
               child:Text(
                 'Here at Pink Hope, we want to ensure every woman is empowered to take control of their breast and ovarian cancer risk, by providing tools, education and support to members of the at-risk community. We also work collaboratively with healthcare providers to ensure a better transition for at-risk women as they move through each stage of their journey, and we promote open discussion around family health history in Australia through targeted campaigns and education. We also advocate for women at risk of breast and ovarian cancer and their families with the aim of earlier diagnoses, risk reduction, and better treatment options. This is how we do this:' ,
-                 style: GoogleFonts.poppins(textStyle:TextStyle(
+                 style: GoogleFonts.mulish(textStyle:TextStyle(
                   fontSize: 14.0,
                   
-                  color: Color(0xff73313b)
+                  color: Color(0xff73313b),
+                  fontWeight: FontWeight.w100
                 )
                 ),
               ))

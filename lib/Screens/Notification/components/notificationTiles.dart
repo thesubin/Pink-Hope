@@ -18,9 +18,9 @@ class NotificationTiles extends StatelessWidget {
           width: 50.0,
           decoration: BoxDecoration(
               image: DecorationImage(image: AssetImage('assets/images/bag_1.png'), fit: BoxFit.cover))),
-      title: Text(title, style: GoogleFonts.poppins(textStyle:TextStyle(color: Colors.black))),
+      title: Text(title, style: GoogleFonts.mulish(textStyle:TextStyle(color: Color(0xff73313b)))),
       subtitle: Text(subtitle,
-          style: GoogleFonts.poppins(textStyle:TextStyle(color: Colors.grey))),
+          style: GoogleFonts.mulish(textStyle:TextStyle(color: Color(0xff73313b),fontWeight: FontWeight.w100))),
       onTap: onTap,
       enabled: enable,
     );

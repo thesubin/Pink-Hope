@@ -84,17 +84,22 @@ class _HomeScreenState extends State<Home> {
               child: Row(
                 
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children:<Widget>[Text(
-                'PINK HOPE',
-                style: TextStyle(
-                  fontSize: 20.0,
+                children:<Widget>[
+              //     Text(
+              //   'PINK HOPE',
+              //   style: TextStyle(
+              //     fontSize: 20.0,
                   
-                  fontWeight: FontWeight.bold,
-                        color: Colors.white
+              //     fontWeight: FontWeight.bold,
+              //           color: Colors.white
             
-                ),
-              ),
-              IconButton(onPressed:() {}, icon: Icon(Icons.search_rounded,      color: Colors.white
+              //   ),
+              // ),
+               SvgPicture.asset("assets/icons/pink-hope.svg",
+                height: size.height *0.06,
+               ),
+           
+              IconButton(onPressed:() {}, icon: Icon(Icons.search_rounded,      color: Color(0xff73313b)
             ,size: 30,))
               ],
             )
@@ -120,7 +125,8 @@ class _HomeScreenState extends State<Home> {
                   fontWeight: FontWeight.w100,
                         color: Color(0xff73313b)
             
-                )))),
+                )))
+                ),
                   Image.asset(
                  "assets/images/home.jpg",
                  height: size.height * 0.30,
@@ -131,10 +137,10 @@ class _HomeScreenState extends State<Home> {
                     padding: EdgeInsets.only(left: 20, right: 20,top: 40),
                     child: Text("Pink Hope is a preventative health hub that provides our community with the necessary tools to asses manage and reduce their risk of breast and ovarian cancer.",
                   textAlign: TextAlign.justify,
-                    style: GoogleFonts.dancingScript(textStyle:TextStyle(
-                    fontSize: 22.0,
+                    style: GoogleFonts.mulish(textStyle:TextStyle(
+                    fontSize: 21.0,
                     
-                    fontWeight: FontWeight.w400,
+                    fontWeight: FontWeight.w100,
                           color: Color(0xff73313b)
             
                 ))) ,),
@@ -143,11 +149,12 @@ class _HomeScreenState extends State<Home> {
                     padding: EdgeInsets.only(top:40),
                     child: Text("PERSONAL STORIES",
                   textAlign: TextAlign.start,
-                  style: GoogleFonts.poppins(textStyle:TextStyle(
+                  style: GoogleFonts.mulish(textStyle:TextStyle(
                   fontSize: 25.0,
                   
                   fontWeight: FontWeight.bold,
-                  color: Colors.black
+                   color: Color(0xff73313b)
+
                 )))),
                 
                     SizedBox(height: 20.0),
