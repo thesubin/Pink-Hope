@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/About/About.dart';
+import 'package:flutter_auth/Screens/Blog/Blog.dart';
 import 'package:flutter_auth/Screens/Donate/Donate.dart';
 import 'package:flutter_auth/Screens/Homepage/CardScroll.dart';
 import 'package:flutter_auth/Screens/Notification/notificationList.dart';
@@ -182,7 +183,7 @@ class _HomeScreenState extends State<Home> {
         ),
     );
     }
-    final List _children= [HomeTab(),Shop(),About(),Donate(),NotificationList()]; //We Have defined the bottom Nav Here
+    final List _children= [HomeTab(),Shop(),About(),Donate(),NotificationList(),Blog()]; //We Have defined the bottom Nav Here
     
     return Scaffold(
       body: SafeArea(
@@ -235,6 +236,16 @@ class _HomeScreenState extends State<Home> {
            BottomNavigationBarItem(
             icon: Icon(
               Icons.notifications,
+              color: Colors.grey,
+             
+              size: 30.0,
+            ),
+            title: SizedBox.shrink(),
+          ),
+
+           BottomNavigationBarItem(
+            icon: Icon(
+              Icons.book,
               color: Colors.grey,
              
               size: 30.0,
