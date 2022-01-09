@@ -27,7 +27,7 @@ class ItemCard extends StatelessWidget {
               // height: 180,
               // width: 160,
               decoration: BoxDecoration(
-                color: product.color,
+                color: kPrimaryLightColor,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Hero(
@@ -46,7 +46,7 @@ class ItemCard extends StatelessWidget {
           ),
           Text(
             "\$${product.price}",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(fontWeight: FontWeight.bold,color: kPrimaryColor),
           )
         ],
       ),

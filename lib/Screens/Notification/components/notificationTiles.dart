@@ -17,7 +17,7 @@ class NotificationTiles extends StatelessWidget {
           height: 50.0,
           width: 50.0,
           decoration: BoxDecoration(
-              image: DecorationImage(image: AssetImage('assets/images/bag_1.png'), fit: BoxFit.cover))),
+              image: DecorationImage(image: AssetImage('assets/images/demo.jpeg'), fit: BoxFit.cover))),
       title: Text(title, style: GoogleFonts.mulish(textStyle:TextStyle(color: Color(0xff73313b)))),
       subtitle: Text(subtitle,
           style: GoogleFonts.mulish(textStyle:TextStyle(color: Color(0xff73313b),fontWeight: FontWeight.w100))),

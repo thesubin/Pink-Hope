@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:flutter_auth/models/Product.dart';
 import 'package:flutter_auth/Screens/Shop/details/details_screen.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'categorries.dart';
 import 'item_card.dart';
@@ -16,11 +17,12 @@ class Body extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: kDefaultPaddin),
           child: Text(
             "SHOP",
-            style: Theme.of(context)
-                .textTheme
-                .headline5
-                .copyWith(fontWeight: FontWeight.bold,color: kPrimaryColor),
-          ),
+            style: GoogleFonts.abrilFatface(textStyle:TextStyle(
+                  fontSize: 30.0,
+                    fontWeight: FontWeight.w400,
+                color: kPrimaryColor
+                  
+                )), ),
         ),
         Categories(),
         Expanded(

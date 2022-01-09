@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 
@@ -23,10 +24,10 @@ class Mission extends StatelessWidget {
           children: [
             Text(
                 'Our Mission',
-                style: GoogleFonts.mulish(textStyle:TextStyle(
-                  fontSize: 20.0,
+                style: GoogleFonts.abrilFatface(textStyle:TextStyle(
+                  fontSize: 30.0,
                     fontWeight: FontWeight.w400,
-                
+                color: kPrimaryColor
                   
                 )),
               )    

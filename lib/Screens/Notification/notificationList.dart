@@ -23,8 +23,8 @@ class _NotificationListState extends State<NotificationList> {
           itemCount: 12,
           itemBuilder: (context, index) {
             return NotificationTiles(
-              title: 'Notification Demo',
-              subtitle: 'Thanks for downloading the Pink Hope app.',
+              title: 'ROCKWEAR & PINK HOPE PILATES SESSION',
+              subtitle: 'Join Rockwear and Pink Hope for an online Pilates session to raise funds for #breastcancerawareness month.',
               enable: true,
               onTap: () => Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => NotificationPage())),

@@ -4,6 +4,7 @@ import 'package:flutter_auth/Screens/Blog/Blog.dart';
 import 'package:flutter_auth/Screens/Donate/Donate.dart';
 import 'package:flutter_auth/Screens/Homepage/CardScroll.dart';
 import 'package:flutter_auth/Screens/Notification/notificationList.dart';
+import 'package:flutter_auth/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
@@ -120,10 +121,10 @@ class _HomeScreenState extends State<Home> {
                     padding: EdgeInsets.all(20),
                     child: Text("What is Pink Hope?",
                   
-                  style: GoogleFonts.poppins(textStyle:TextStyle(
+                  style: GoogleFonts.abrilFatface(textStyle:TextStyle(
                   fontSize: 45.0,
                   
-                  fontWeight: FontWeight.w100,
+                  fontWeight: FontWeight.w400,
                         color: Color(0xff73313b)
             
                 )))
@@ -150,7 +151,7 @@ class _HomeScreenState extends State<Home> {
                     padding: EdgeInsets.only(top:40),
                     child: Text("PERSONAL STORIES",
                   textAlign: TextAlign.start,
-                  style: GoogleFonts.mulish(textStyle:TextStyle(
+                  style: GoogleFonts.abrilFatface(textStyle:TextStyle(
                   fontSize: 25.0,
                   
                   fontWeight: FontWeight.bold,
@@ -200,7 +201,7 @@ class _HomeScreenState extends State<Home> {
           BottomNavigationBarItem(
             icon: Icon(
               Icons.home,
-              color: Colors.grey,
+              color: kPrimaryColor,
               size: 30.0,
             ),
             title: SizedBox.shrink(),
@@ -209,7 +210,7 @@ class _HomeScreenState extends State<Home> {
             icon: Icon(
               Icons.shopping_bag,
               size: 30.0,
-               color: Colors.grey,
+               color: kPrimaryColor,
              
             ),
             title: SizedBox.shrink(),
@@ -218,7 +219,7 @@ class _HomeScreenState extends State<Home> {
             icon: Icon(
               Icons.people,
               size: 30.0,
-             color: Colors.grey,
+             color: kPrimaryColor,
              
             ),
             title: SizedBox.shrink(),
@@ -227,7 +228,7 @@ class _HomeScreenState extends State<Home> {
             icon: Icon(
               Icons.card_giftcard ,
               size: 30.0,
-             color: Colors.grey,
+             color: kPrimaryColor,
              
             ),
             title: SizedBox.shrink(),
@@ -236,7 +237,7 @@ class _HomeScreenState extends State<Home> {
            BottomNavigationBarItem(
             icon: Icon(
               Icons.notifications,
-              color: Colors.grey,
+              color: kPrimaryColor,
              
               size: 30.0,
             ),
@@ -246,7 +247,7 @@ class _HomeScreenState extends State<Home> {
            BottomNavigationBarItem(
             icon: Icon(
               Icons.book,
-              color: Colors.grey,
+              color: kPrimaryColor,
              
               size: 30.0,
             ),

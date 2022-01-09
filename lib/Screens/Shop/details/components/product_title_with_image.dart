@@ -20,14 +20,14 @@ class ProductTitleWithImage extends StatelessWidget {
         children: <Widget>[
           Text(
             "Aristocratic Hand Bag",
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: kPrimaryColor),
           ),
           Text(
             product.title,
             style: Theme.of(context)
                 .textTheme
                 .headline4
-                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                .copyWith(color: kPrimaryColor, fontWeight: FontWeight.bold),
           ),
           SizedBox(height: kDefaultPaddin),
           Row(
@@ -35,11 +35,11 @@ class ProductTitleWithImage extends StatelessWidget {
               RichText(
                 text: TextSpan(
                   children: [
-                    TextSpan(text: "Price\n"),
+                    TextSpan(text: "Price\n",style: TextStyle(color: kPrimaryColor)),
                     TextSpan(
                       text: "\$${product.price}",
                       style: Theme.of(context).textTheme.headline4.copyWith(
-                          color: Colors.white, fontWeight: FontWeight.bold),
+                          color: kPrimaryColor, fontWeight: FontWeight.bold),
                     ),
                   ],
                 ),

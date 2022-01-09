@@ -66,12 +66,12 @@ final data = [
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Your daily read',
-                  style: GoogleFonts.mulish(textStyle:TextStyle(
+                  'Latest Post',
+                  style: GoogleFonts.abrilFatface(textStyle:TextStyle(
                   
                         color: Color(0xff73313b),
-                        fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                        fontWeight: FontWeight.w400,
+                    fontSize: 25,
                   )),
                   textAlign: TextAlign.left,
                 ),
@@ -107,12 +107,12 @@ final data = [
                   height: 20,
                 ),
                 Text(
-                  'Writing Contest',
-                   style: GoogleFonts.mulish(textStyle:TextStyle(
+                  'Health and Well Being',
+                   style: GoogleFonts.abrilFatface(textStyle:TextStyle(
                       color: Color(0xff73313b),
                       
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 25,
                   )),
                  textAlign: TextAlign.left,
                 ),

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
 
 class ProductTitleWithImage extends StatelessWidget {
   
@@ -17,11 +20,12 @@ class ProductTitleWithImage extends StatelessWidget {
           ),
           Text(
             "Who we Are",
-            style: Theme.of(context)
-                .textTheme
-                .headline3
-                .copyWith(color: Colors.white, fontWeight: FontWeight.bold),
-          ),
+              style: GoogleFonts.abrilFatface(textStyle:TextStyle(
+                  fontSize: 40.0,
+                    fontWeight: FontWeight.w400,
+                color: Colors.white
+              
+          ))),
           SizedBox(height: kDefaultPaddin),
         ],
       ),

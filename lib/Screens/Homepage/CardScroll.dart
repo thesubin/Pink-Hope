@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/constants.dart';
 import 'data.dart';
 import 'dart:math';
 class CardScrollWidget extends StatelessWidget {
@@ -84,12 +85,12 @@ class CardScrollWidget extends StatelessWidget {
                                     left: 12.0, bottom: 12.0),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
-                                      horizontal: 22.0, vertical: 6.0),
+                                      horizontal: 32.0, vertical: 10.0),
                                   decoration: BoxDecoration(
-                                      color: Colors.blueAccent,
+                                      color: kPrimaryColor,
                                       borderRadius: BorderRadius.circular(20.0)),
                                   child: Text("Read More",
-                                      style: TextStyle(color: Colors.white)),
+                                      style: TextStyle(color: kPrimaryLightColor)),
                                 ),
                               )
                             ],

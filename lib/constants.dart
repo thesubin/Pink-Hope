@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-const kPrimaryColor = Colors.pink;
-const kPrimaryLightColor = Color.fromRGBO(245, 39, 99, 0.25);
+const kPrimaryColor = Color(0xFF73313b);
+const kPrimaryLightColor = Color.fromRGBO(241, 207, 213, 1);
 const kDefaultPaddin = 20.0;
 
 const kTextColor = Color(0xFF535353);
