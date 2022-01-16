@@ -1,19 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+class WebSite extends StatefulWidget {
+  const WebSite({
+    @required this.url
+  });
 
-class Donate extends StatefulWidget {
 
 
-
+  final String url;
   @override
-_WebviewState createState() => _WebviewState();
+_WebviewState createState() => _WebviewState(url:url);
   
 }
 
-class _WebviewState extends State<Donate>{
+class _WebviewState extends State<WebSite>{
  
-  
+  _WebviewState({
+    @required this.url
+  });
 
+  final String url;
   bool isLoading=true;
  
 
@@ -22,7 +28,7 @@ class _WebviewState extends State<Donate>{
     return Scaffold(
       body: Stack(
         children:<Widget>[
-        WebView(initialUrl: 'https://www.pinkhope.org.au/donate',javascriptMode: JavascriptMode.unrestricted,
+        WebView(initialUrl: url,javascriptMode: JavascriptMode.unrestricted,
        onPageFinished: (finish) {
               setState(() {
                 isLoading = false;

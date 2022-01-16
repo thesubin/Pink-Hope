@@ -9,6 +9,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 import 'data.dart';
+import 'dart:math';
+import 'package:flutter_auth/Screens/Blog/SinglePage.dart';
 import 'package:flutter_auth/Screens/Shop/home/home_screen.dart';
 class Home extends StatefulWidget {
   @override
@@ -164,14 +166,27 @@ class _HomeScreenState extends State<Home> {
                 children: <Widget>[
                   CardScrollWidget(currentPage),
                   Positioned.fill(
-                    child: PageView.builder(
+                    child: GestureDetector(
+                       onTap: () {
+                                  Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (_) => PostDetailsPage(
+                                        title: title[currentPage.toInt()],
+                                        image: images[currentPage.toInt()],
+                                        author: title[currentPage.toInt()],
+                                        date: DateTime.now().toString(),
+                                      ),
+                                    ),
+                                  );
+                                },
+                      child:PageView.builder(
                       itemCount: images.length,
                       controller: controller,
                       reverse: true,
                       itemBuilder: (context, index) {
                         return Container();
                       },
-                    ),
+                    )),
                   )
                 ],
               ),

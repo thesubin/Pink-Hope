@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/constants.dart';
 import 'data.dart';
 import 'dart:math';
+import 'package:flutter_auth/Screens/Blog/SinglePage.dart';
 class CardScrollWidget extends StatelessWidget {
    
    var currentPage;
@@ -29,7 +30,7 @@ class CardScrollWidget extends StatelessWidget {
   
           var primaryCardLeft = safeWidth - widthOfPrimaryCard;
           var horizontalInset = primaryCardLeft / 2;
-  
+          
           List<Widget> cardList = new List();
   
           for (var i = 0; i < images.length; i++) {
@@ -58,12 +59,16 @@ class CardScrollWidget extends StatelessWidget {
                   ]),
                   child: AspectRatio(
                     aspectRatio: cardAspectRatio,
+                    
                     child: Stack(
+                      
                       fit: StackFit.expand,
+                      
                       children: <Widget>[
                         Image.asset(images[i], fit: BoxFit.cover),
                         Align(
                           alignment: Alignment.bottomLeft,
+                         
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -84,20 +89,34 @@ class CardScrollWidget extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: 12.0, bottom: 12.0),
                                 child: Container(
+                                  
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 32.0, vertical: 10.0),
                                   decoration: BoxDecoration(
                                       color: kPrimaryColor,
                                       borderRadius: BorderRadius.circular(20.0)),
-                                  child: Text("Read More",
+                                  child: GestureDetector(
+                                      onTap: () {
+                                          Navigator.of(context).push(
+                                            MaterialPageRoute(
+                                              builder: (_) => PostDetailsPage(
+                                                title: title[i],
+                                                image: images[i],
+                                                author: title[i],
+                                                date: DateTime.now().toString(),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      child:Text("Read More",
                                       style: TextStyle(color: kPrimaryLightColor)),
-                                ),
+                                   )   ),
                               )
                             ],
                           ),
                         )
                       ],
-                    ),
+                    )
                   ),
                 ),
               ),
