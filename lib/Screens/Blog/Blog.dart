@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Blog/CreateBlog.dart';
 import 'package:flutter_auth/Screens/Blog/SinglePage.dart';
 import 'package:flutter_auth/Screens/Blog/PostCellWidget.dart';
+import 'package:flutter_auth/constants.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_svg/svg.dart';
 
 
 class Post {
@@ -40,12 +43,59 @@ final data = [
       date: '11 Mar 2020',
     ),
   ];
+  
   @override
   Widget build(BuildContext context){
+    Size size = MediaQuery.of(context).size;
+    
     return SafeArea(
-        minimum: const EdgeInsets.all(16),
-        child: Column(
+        child:
+        Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.center,
+            colors: [
+              Color(0xfff1cfd5),
+              Color(0xfff1cfd5),
+                      
+            ]
+          )
+        ),
+        child:ListView(
+        children:<Widget> [
+          Column(
+          
           children: [
+             Padding(
+              padding: EdgeInsets.only(left: 20.0, right: 10.0,top: 20),
+              child: Row(
+                
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children:<Widget>[
+                  Text(
+                'Blog',
+                style: GoogleFonts.abrilFatface(textStyle:TextStyle(
+                  fontSize: 25.0,
+                  
+                  fontWeight: FontWeight.bold,
+                        color: kPrimaryColor
+            
+                )),
+              ),
+              //  SvgPicture.asset("assets/icons/pink-hope.svg",
+              //   height: size.height *0.06,
+              //  ),
+           
+              IconButton(onPressed:() {
+                    Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CreateBlog()));
+            
+              }, icon: Icon(Icons.add,      color: Color(0xff73313b)
+            ,size: 30,))
+              ],
+            )
+            ),
             // TextField(
             //   decoration: InputDecoration(
             //     hintText: 'Search for articles, author, and tags',
@@ -61,7 +111,15 @@ final data = [
             const SizedBox(
               height: 20,
             ),
-            Column(
+              Container(
+                
+              decoration: BoxDecoration(color: Colors.white,
+              borderRadius: BorderRadius.only(topLeft: Radius.circular(60),topRight:  Radius.circular(60))),
+              width: double.infinity,
+              child:   Padding(
+              padding: EdgeInsets.only(left: 20, right: 20,top: 40,bottom: 50),
+             child: Column(
+            
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -161,8 +219,11 @@ final data = [
                   ),
                 )
               ],
+            ))
             ),
           ],
+        )
+        ])
         ),
       );
     

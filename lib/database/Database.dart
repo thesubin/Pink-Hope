@@ -8,7 +8,7 @@ class Database {
   }
 
   Future<void> create(String name, String description, String image, String url) async {
-   QuerySnapshot querySnapshot;
+   QuerySnapshot querySnapshot; 
    List docs = [];
     try {
     
@@ -33,5 +33,18 @@ class Database {
       print(e);
     }
   }
+
+    Future<void> addData(blogData) async {
+    firestore.collection("blogs").add(blogData).catchError((e) {
+      print(e);
+    });
+  }
+
+   Future<void> createUser(email,name) async {
+    firestore.collection("users").add({'name':name,"email":email}).catchError((e) {
+      print(e);
+    });
+  }
+
 
 }

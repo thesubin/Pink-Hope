@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/About/About.dart';
 import 'package:flutter_auth/Screens/Blog/Blog.dart';
+import 'package:flutter_auth/Screens/Blog/CreateBlog.dart';
 import 'package:flutter_auth/Screens/Donate/Donate.dart';
 import 'package:flutter_auth/Screens/Homepage/CardScroll.dart';
 import 'package:flutter_auth/Screens/Notification/notificationList.dart';
+import 'package:flutter_auth/Screens/profile/profile_screen.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -74,7 +76,7 @@ class _HomeScreenState extends State<Home> {
           gradient: LinearGradient(
             begin: Alignment.center,
             colors: [
-                          Color(0xfff1cfd5),
+              Color(0xfff1cfd5),
               Color(0xfff1cfd5),
                       
             ]
@@ -190,7 +192,22 @@ class _HomeScreenState extends State<Home> {
                   )
                 ],
               ),
-         
+               Container(
+        padding: EdgeInsets.symmetric(vertical: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            FloatingActionButton(
+              backgroundColor: kPrimaryColor,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => CreateBlog()));
+              },
+              child: Icon(Icons.add),
+            )
+          ],
+        ),
+      ),
                 ],),
               ),
          
@@ -199,7 +216,7 @@ class _HomeScreenState extends State<Home> {
         ),
     );
     }
-    final List _children= [HomeTab(),Shop(),About(),Donate(),NotificationList(),Blog()]; //We Have defined the bottom Nav Here
+    final List _children= [HomeTab(),About(),Donate(),NotificationList(),Blog(),ProfileScreen()]; //We Have defined the bottom Nav Here
     
     return Scaffold(
       body: SafeArea(
@@ -218,15 +235,6 @@ class _HomeScreenState extends State<Home> {
               Icons.home,
               color: kPrimaryColor,
               size: 30.0,
-            ),
-            title: SizedBox.shrink(),
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(
-              Icons.shopping_bag,
-              size: 30.0,
-               color: kPrimaryColor,
-             
             ),
             title: SizedBox.shrink(),
           ),
@@ -262,6 +270,15 @@ class _HomeScreenState extends State<Home> {
            BottomNavigationBarItem(
             icon: Icon(
               Icons.book,
+              color: kPrimaryColor,
+             
+              size: 30.0,
+            ),
+            title: SizedBox.shrink(),
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
               color: kPrimaryColor,
              
               size: 30.0,

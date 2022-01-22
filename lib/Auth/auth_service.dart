@@ -1,8 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter_auth/database/Database.dart';
 
 class AuthenticationService {
   final FirebaseAuth _firebaseAuth;
-
+  Database db;
+ 
   AuthenticationService(this._firebaseAuth);
 
   /// Changed to idTokenChanges as it updates depending on more cases.
@@ -34,9 +36,16 @@ class AuthenticationService {
   /// This is to make it as easy as possible but a better way would be to
   /// use your own custom class that would take the exception and return better
   /// error messages. That way you can throw, return or whatever you prefer with that instead.
-  Future<String> signUp({String email, String password}) async {
+  Future<String> signUp({String email, String password,String name}) async {
+         db = Database();
+       db.initiliase();
+     
     try {
-      await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password);
+      await _firebaseAuth.createUserWithEmailAndPassword(email: email, password: password).then((value) => 
+      
+        db.createUser(value.user.email,name)
+      
+        );
       return "Signed up";
     } on FirebaseAuthException catch (e) {
       return e.message;

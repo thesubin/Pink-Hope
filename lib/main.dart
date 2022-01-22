@@ -53,7 +53,7 @@ class WrapperBody extends State<MyApp>{
       LocalNotificationService.initialize(context);
       db = Database();
       db.initiliase();
-        db.create("message.notification.title", "message.notification.body","message.notification.android.imageUrl","message.data['url']");
+      db.create("message.notification.title", "message.notification.body","message.notification.android.imageUrl","message.data['url']");
 
     
     FirebaseMessaging.onMessage.listen((message) {

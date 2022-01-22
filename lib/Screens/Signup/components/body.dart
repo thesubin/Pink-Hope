@@ -17,6 +17,7 @@ class Body extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
      final TextEditingController emailController = TextEditingController();
     final TextEditingController passwordController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
 
     return Background(
       child: SingleChildScrollView(
@@ -38,6 +39,13 @@ class Body extends StatelessWidget {
                controller: emailController,
              
             ),
+             RoundedInputField(
+              hintText: "Your Name",
+              onChanged: (value) {},
+               controller: nameController,
+             
+            )
+            ,
             RoundedPasswordField(
             controller: passwordController,
   
@@ -49,6 +57,7 @@ class Body extends StatelessWidget {
                      context.read<AuthenticationService>().signUp(
                     email: emailController.text.trim(),
                     password: passwordController.text.trim(),
+                    name: nameController.text.trim()
                   ).then((value) => print(value));
             
               },
