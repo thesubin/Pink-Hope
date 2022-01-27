@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth/Screens/Homepage/homescreen.dart';
 import 'package:flutter_auth/database/Database.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
@@ -13,7 +14,7 @@ class CreateBlog extends StatefulWidget {
 }
 
 class _CreateBlogState extends State<CreateBlog> {
-  String authorName, title, desc,category = 'Health & Beauty';
+  String authorName, title, desc,category = 'Health & Well Being';
   Database db;
      
   File selectedImage;
@@ -47,7 +48,7 @@ class _CreateBlogState extends State<CreateBlog> {
 
       Map<String, String> blogMap = {
         "imgUrl": downloadUrl,
-        "date": DateTime.now().toString(),
+        "timestamp": DateTime.now().toString(),
         "title": title,
         "category":category,
         // "author": ,
@@ -55,7 +56,9 @@ class _CreateBlogState extends State<CreateBlog> {
       };
      db = Database();
      db.initiliase();
-     db.addData(blogMap).then((value) => Navigator.pop(context));
+     db.addData(blogMap).then((value) => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Home())));
+       
      
     } else {}
   }
@@ -63,7 +66,7 @@ class _CreateBlogState extends State<CreateBlog> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-              floatingActionButton:    FloatingActionButton(
+              floatingActionButton:  _isLoading?SizedBox(height: 0,):  FloatingActionButton(
               backgroundColor: kPrimaryColor,
               onPressed: () {
                 uploadBlog();
@@ -170,7 +173,7 @@ class _CreateBlogState extends State<CreateBlog> {
                           onChanged: (val) {
                             category= val;
                           },
-                          items: <String>['Health & Beauty', 'Yoga', 'Fitness', 'Spirituality']
+                          items: <String>['Health & Well Being', 'Yoga', 'Fitness', 'Spirituality']
                                     .map<DropdownMenuItem<String>>((String value) {
                                   return DropdownMenuItem<String>(
                                     value: value,

@@ -6,8 +6,8 @@ import 'package:flutter_auth/Screens/Blog/SinglePage.dart';
 class CardScrollWidget extends StatelessWidget {
    
    var currentPage;
-   
-  CardScrollWidget(this.currentPage);
+   List blogData = [];
+  CardScrollWidget(this.currentPage,this.blogData);
     @override
     Widget build(BuildContext context) {
         var padding = 20.0;
@@ -15,7 +15,7 @@ class CardScrollWidget extends StatelessWidget {
     
         var cardAspectRatio = 12.0 / 16.0;
         var widgetAspectRatio = cardAspectRatio * 1.2;
-    
+      print(blogData );
       return new AspectRatio(
         aspectRatio: widgetAspectRatio,
         child: LayoutBuilder(builder: (context, contraints) {
@@ -33,7 +33,7 @@ class CardScrollWidget extends StatelessWidget {
           
           List<Widget> cardList = new List();
   
-          for (var i = 0; i < images.length; i++) {
+          for (var i = 0; i < blogData.length; i++) {
             var delta = i - currentPage;
             bool isOnRight = delta > 0;
   
@@ -65,7 +65,7 @@ class CardScrollWidget extends StatelessWidget {
                       fit: StackFit.expand,
                       
                       children: <Widget>[
-                        Image.asset(images[i], fit: BoxFit.cover),
+                        Image.network(blogData[i]['imgUrl'], fit: BoxFit.cover),
                         Align(
                           alignment: Alignment.bottomLeft,
                          
@@ -76,7 +76,7 @@ class CardScrollWidget extends StatelessWidget {
                               Padding(
                                 padding: EdgeInsets.symmetric(
                                     horizontal: 16.0, vertical: 8.0),
-                                child: Text(title[i],
+                                child: Text(blogData[i]['title'],
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 25.0,
@@ -97,16 +97,16 @@ class CardScrollWidget extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(20.0)),
                                   child: GestureDetector(
                                       onTap: () {
-                                          Navigator.of(context).push(
-                                            MaterialPageRoute(
-                                              builder: (_) => PostDetailsPage(
-                                                title: title[i],
-                                                image: images[i],
-                                                author: title[i],
-                                                date: DateTime.now().toString(),
-                                              ),
-                                            ),
-                                          );
+                                          // Navigator.of(context).push(
+                                          //   MaterialPageRoute(
+                                          //     builder: (_) => PostDetailsPage(
+                                          //       title: title[i],
+                                          //       image: images[i],
+                                          //       author: title[i],
+                                          //       date: DateTime.now().toString(),
+                                          //     ),
+                                          //   ),
+                                          // );
                                         },
                                       child:Text("Read More",
                                       style: TextStyle(color: kPrimaryLightColor)),

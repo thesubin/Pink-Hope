@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Blog/CreateBlog.dart';
 import 'package:flutter_auth/Screens/Blog/SinglePage.dart';
@@ -17,6 +19,8 @@ class Post {
 }
 
 class Blog extends StatelessWidget{
+    final List blogData;
+    Blog( this.blogData);
 final data = [
     Post(
       image: 'assets/images/image_01.png',
@@ -43,10 +47,66 @@ final data = [
       date: '11 Mar 2020',
     ),
   ];
+
+  final itemCategory = ['Health & Well Being', 'Yoga', 'Fitness', 'Spirituality'];
+                                   
   
   @override
   Widget build(BuildContext context){
     Size size = MediaQuery.of(context).size;
+
+    renderCategory(category){
+      print('object');
+      print(blogData.where((element) => element['category'] == category).toList());
+      return  blogData.where((element) => element['category'] == category).toList().length>0?Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children:[
+          SizedBox(height: 20,),
+               blogData.where((element) => element['category'] == category).toList().length>0? Text(
+                  category,
+                   style: GoogleFonts.abrilFatface(textStyle:TextStyle(
+                      color: Color(0xff73313b),
+                      
+                    fontWeight: FontWeight.w400,
+                    fontSize: 25,
+                  )),
+                 textAlign: TextAlign.left,
+                ):const SizedBox(
+                  height: 20,
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                  ListView.separated(
+                  shrinkWrap: true,
+                     physics: NeverScrollableScrollPhysics(),
+               
+                  itemCount: blogData.where((element) => element['category'] == category).length,
+                  itemBuilder: (context, index) {
+                    final post = blogData.where((element) => element['category'] == category).toList()[index];
+                    return PostCellWidget(
+                        title: post['title'],
+                        image: post['imgUrl'],
+                        author: "post.author",
+                        date: post['timestamp'],
+                        onClick: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (_) => PostDetailsPage(
+                                title: post['title'],
+                                image: post['imgUrl'],
+                                author: "post.author",
+                                date: post['timestamp'],
+                                desc: post['desc'],
+                      ),
+                            ),
+                          );
+                        });
+                  },
+                  separatorBuilder: (context, index) => Divider(),
+                )]
+                ):SizedBox(height: 0,);
+    }
     
     return SafeArea(
         child:
@@ -137,88 +197,49 @@ final data = [
                   height: 20,
                 ),
                 ListView.separated(
+                  physics: NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  itemCount: data.length,
+                  itemCount: blogData.length,
                   itemBuilder: (context, index) {
-                    final post = data[index];
+                    final post = blogData[index];
                     return PostCellWidget(
-                        title: post.title,
-                        image: post.image,
-                        author: post.author,
-                        date: post.date,
+                        title: post['title'],
+                        image: post['imgUrl'],
+                        author: "post.author",
+                        date: post['timestamp'],
                         onClick: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (_) => PostDetailsPage(
-                                title: post.title,
-                                image: post.image,
-                                author: post.author,
-                                date: post.date,
-                              ),
+                                title: post['title'],
+                                image: post['imgUrl'],
+                                author: "post.author",
+                                date: post['timestamp'],
+                                desc: post['desc'],
+                      ),
                             ),
                           );
                         });
                   },
                   separatorBuilder: (context, index) => Divider(),
                 ),
+                 ListView.separated(
+                  shrinkWrap: true,
+                   physics: NeverScrollableScrollPhysics(),
+               
+                  itemCount: itemCategory.length,
+                  itemBuilder: (context, index) {
+                    final post = itemCategory[index];
+                    return renderCategory(post);
+                  },
+                  separatorBuilder: (context, index) => SizedBox(
+                  height: 0,
+                ),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
-                Text(
-                  'Health and Well Being',
-                   style: GoogleFonts.abrilFatface(textStyle:TextStyle(
-                      color: Color(0xff73313b),
-                      
-                    fontWeight: FontWeight.w400,
-                    fontSize: 25,
-                  )),
-                 textAlign: TextAlign.left,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                Container(
-                  height: 80,
-                  child: ListView(
-                    scrollDirection: Axis.horizontal,
-                    children: [
-                      Container(
-                        width: 130,
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            'assets/images/image_02.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 130,
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            'assets/images/image_02.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      Container(
-                        width: 130,
-                        padding: const EdgeInsets.symmetric(horizontal: 4),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.asset(
-                            'assets/images/image_03.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                )
-              ],
+               ],
             ))
             ),
           ],

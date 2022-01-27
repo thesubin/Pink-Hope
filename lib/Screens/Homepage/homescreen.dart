@@ -6,11 +6,14 @@ import 'package:flutter_auth/Screens/Donate/Donate.dart';
 import 'package:flutter_auth/Screens/Homepage/CardScroll.dart';
 import 'package:flutter_auth/Screens/Notification/notificationList.dart';
 import 'package:flutter_auth/Screens/profile/profile_screen.dart';
+import 'package:flutter_auth/WebView/Donate.dart';
 import 'package:flutter_auth/constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:flutter_svg/svg.dart';
 import 'data.dart';
+import 'package:flutter_auth/database/Database.dart';
+
 import 'dart:math';
 import 'package:flutter_auth/Screens/Blog/SinglePage.dart';
 import 'package:flutter_auth/Screens/Shop/home/home_screen.dart';
@@ -21,8 +24,27 @@ class Home extends StatefulWidget {
 
 class _HomeScreenState extends State<Home> {
   int _selectedIndex = 0;
-  var currentPage = images.length - 1.0;
+  List blogData = [];
+ 
+  var currentPage = 0.0;
+  Database db;
+  void initialize(){
+    db = Database();
+    db.initiliase();
+    db.getBlogs().then((value) => setState(() {
+        blogData= value;
+        currentPage= value.length - 1.0;
+        print('Asd State');
+        print(value);
 
+        }));
+
+  }
+  @override
+  void initState(){
+    super.initState();
+    initialize();
+  }
   int _currentTab = 0;
   List<IconData> _icons = [
     FontAwesomeIcons.plane,
@@ -30,6 +52,7 @@ class _HomeScreenState extends State<Home> {
     FontAwesomeIcons.walking,
     FontAwesomeIcons.biking,
   ];
+  
 
   Widget _buildIcon(int index) {
     return GestureDetector(
@@ -61,7 +84,7 @@ class _HomeScreenState extends State<Home> {
   @override
   Widget build(BuildContext context) {
      
- PageController controller = PageController(initialPage: images.length - 1);
+ PageController controller = PageController(initialPage: blogData.length - 1);
     controller.addListener(() {
       setState(() {
         currentPage = controller.page;
@@ -69,7 +92,10 @@ class _HomeScreenState extends State<Home> {
     });
 
     Size size = MediaQuery.of(context).size;
-      Widget  HomeTab(){
+      Widget  HomeTab( List dataBlog){
+        
+        print(dataBlog);
+     
       return  Container(
         width: double.infinity,
         decoration: BoxDecoration(
@@ -105,7 +131,10 @@ class _HomeScreenState extends State<Home> {
                 height: size.height *0.06,
                ),
            
-              IconButton(onPressed:() {}, icon: Icon(Icons.search_rounded,      color: Color(0xff73313b)
+              IconButton(onPressed:() {
+                      Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => WebSite(url: 'https://www.pinkhope.org.au/shop',)));
+              }, icon: Icon(Icons.shopping_bag_outlined,      color: Color(0xff73313b)
             ,size: 30,))
               ],
             )
@@ -166,23 +195,24 @@ class _HomeScreenState extends State<Home> {
                     SizedBox(height: 20.0),
                                   Stack(
                 children: <Widget>[
-                  CardScrollWidget(currentPage),
+                  CardScrollWidget(currentPage,blogData),
                   Positioned.fill(
                     child: GestureDetector(
                        onTap: () {
                                   Navigator.of(context).push(
                                     MaterialPageRoute(
                                       builder: (_) => PostDetailsPage(
-                                        title: title[currentPage.toInt()],
-                                        image: images[currentPage.toInt()],
+                                        title: blogData[currentPage.toInt()]['title'],
+                                        image: blogData[currentPage.toInt()]['imgUrl'],
                                         author: title[currentPage.toInt()],
-                                        date: DateTime.now().toString(),
+                                        date: blogData[currentPage.toInt()]['timestamp'],
+                                        desc: blogData[currentPage.toInt()]['desc'] ,
                                       ),
                                     ),
                                   );
                                 },
                       child:PageView.builder(
-                      itemCount: images.length,
+                      itemCount: blogData.length,
                       controller: controller,
                       reverse: true,
                       itemBuilder: (context, index) {
@@ -216,7 +246,8 @@ class _HomeScreenState extends State<Home> {
         ),
     );
     }
-    final List _children= [HomeTab(),About(),Donate(),NotificationList(),Blog(),ProfileScreen()]; //We Have defined the bottom Nav Here
+
+    final List _children= [HomeTab(blogData),About(),Donate(),WebSite(url:"https://www.pinkhope.org.au/join-an-event"),Blog(blogData),ProfileScreen()]; //We Have defined the bottom Nav Here
     
     return Scaffold(
       body: SafeArea(
