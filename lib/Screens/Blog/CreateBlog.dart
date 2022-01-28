@@ -3,6 +3,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/Homepage/homescreen.dart';
 import 'package:flutter_auth/database/Database.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter_auth/constants.dart';
@@ -56,8 +57,21 @@ class _CreateBlogState extends State<CreateBlog> {
       };
      db = Database();
      db.initiliase();
-     db.addData(blogMap).then((value) => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => Home())));
+     db.addData(blogMap).then((value) {
+            if(value){
+                  Fluttertoast.showToast(msg: 'Succesfully Posted Your Story');
+         
+            }
+            else{
+                  Fluttertoast.showToast(msg: 'Something Went Wrong Please try again');
+         
+            }
+           Navigator.push(context,
+            MaterialPageRoute(builder: (context) => Home())
+            );
+
+            }
+            );
        
      
     } else {}

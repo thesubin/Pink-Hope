@@ -48,7 +48,14 @@ class AuthenticationService {
         );
       return "Signed up";
     } on FirebaseAuthException catch (e) {
-      return e.message;
+      switch(e.message.toUpperCase()){
+        case "GIVEN STRING IS EMPTY OR NULL":
+        return "Fields Cannot be empty";
+        break;
+        default:
+         return e.message;
+   
+      }
     }
   }
 }

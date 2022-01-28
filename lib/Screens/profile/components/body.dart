@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_auth/Screens/ContactUs/signup_screen.dart';
 import 'package:flutter_auth/Screens/Supported/About.dart';
 import 'package:flutter_auth/WebView/Donate.dart';
+import 'package:flutter_auth/main.dart';
 
 import 'profile_menu.dart';
 import 'profile_pic.dart';
@@ -46,7 +47,9 @@ class Body extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) {
-                      return (ContactUsScreen());
+                      // return (ContactUsScreen());
+                      return (WebSite(url: 'https://www.pinkhope.org.au/contact-us',));
+              
                     },
                   ),
                 );
@@ -84,7 +87,15 @@ class Body extends StatelessWidget {
             text: "Log Out",
             icon: "assets/icons/Log out.svg",
             press: () {
-               context.read<AuthenticationService>().signOut();
+               context.read<AuthenticationService>().signOut().then((value) => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return (MyApp());
+                    },
+                  ),
+                )
+ );
                     
             },
           ),

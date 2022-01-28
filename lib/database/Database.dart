@@ -36,10 +36,17 @@ class Database {
     }
   }
 
-    Future<void> addData(blogData) async {
-    firestore.collection("blogs").add(blogData).catchError((e) {
+    Future<bool> addData(blogData) async {
+    try{
+    await firestore.collection("blogs").add(blogData).catchError((e) {
       print(e);
     });
+    return true;
+    }
+    catch(e){
+      return false;
+    }
+
   }
 
    Future<void> createUser(email,name) async {
