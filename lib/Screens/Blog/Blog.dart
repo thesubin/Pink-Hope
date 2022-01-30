@@ -87,7 +87,7 @@ final data = [
                     return PostCellWidget(
                         title: post['title'],
                         image: post['imgUrl'],
-                        author: "post.author",
+                        author: post['author'],
                         date: post['timestamp'],
                         onClick: () {
                           Navigator.of(context).push(
@@ -95,7 +95,7 @@ final data = [
                               builder: (_) => PostDetailsPage(
                                 title: post['title'],
                                 image: post['imgUrl'],
-                                author: "post.author",
+                                author: post['author'],
                                 date: post['timestamp'],
                                 desc: post['desc'],
                       ),

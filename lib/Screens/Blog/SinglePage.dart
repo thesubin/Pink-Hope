@@ -257,6 +257,10 @@ class PostDetailsPage extends StatelessWidget {
                   ],
                 ),
               ),
+                   const SizedBox(
+                height: 16,
+              ),
+         
             ],
           ),
         ),

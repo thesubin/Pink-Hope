@@ -7,7 +7,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:random_string/random_string.dart';
 import 'package:flutter_auth/constants.dart';
+import 'package:provider/provider.dart';
 
+import 'package:flutter_auth/Auth/auth_service.dart';
 import 'package:flutter_auth/components/rounded_button.dart';
 class CreateBlog extends StatefulWidget {
   @override
@@ -20,7 +22,28 @@ class _CreateBlogState extends State<CreateBlog> {
      
   File selectedImage;
   bool _isLoading = false;
-  
+  String userEmail;
+  String userName = '';
+  @override
+  void initState(){
+    super.initState();
+     db = Database();
+     db.initiliase();
+    
+     db.getUserName(context.read<AuthenticationService>().getUser()).then((value){
+    
+      setState(() {
+        userEmail = context.read<AuthenticationService>().getUser();
+        userName = value;
+
+      });
+
+    });
+        
+      
+    
+  }
+
   Future getImage() async {
     ImagePicker picker = ImagePicker();
     var image = await picker.pickImage(source: ImageSource.gallery);
@@ -52,11 +75,10 @@ class _CreateBlogState extends State<CreateBlog> {
         "timestamp": DateTime.now().toString(),
         "title": title,
         "category":category,
-        // "author": ,
-        "desc": desc
+         "authorEmail": userEmail,
+        "desc": desc,
+        'author':userName
       };
-     db = Database();
-     db.initiliase();
      db.addData(blogMap).then((value) {
             if(value){
                   Fluttertoast.showToast(msg: 'Succesfully Posted Your Story');

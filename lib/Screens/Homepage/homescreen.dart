@@ -204,7 +204,7 @@ class _HomeScreenState extends State<Home> {
                                       builder: (_) => PostDetailsPage(
                                         title: blogData[currentPage.toInt()]['title'],
                                         image: blogData[currentPage.toInt()]['imgUrl'],
-                                        author: title[currentPage.toInt()],
+                                        author: blogData[currentPage.toInt()]['author'],
                                         date: blogData[currentPage.toInt()]['timestamp'],
                                         desc: blogData[currentPage.toInt()]['desc'] ,
                                       ),
